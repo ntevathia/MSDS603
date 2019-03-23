@@ -34,12 +34,13 @@ def git_clone(ssh):
         git_pull_command = "cd " + git_repo_name + "; git pull origin master"
         
         stdin, stdout, stderr = ssh.exec_command(git_clone_command)
-        print(stdout.read())
-        print(stderr.read())
+        #print(stdout.read())
+        #print(stderr.read())
 
         a = stderr.read()
     
         if 'fatal' in str(a):
+            print("Clone fresh copy!!")
             stdin, stdout, stderr = ssh.exec_command(git_pull_command)
             print(stdout.read())
             print(stderr.read())
